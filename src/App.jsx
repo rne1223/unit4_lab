@@ -5,7 +5,7 @@ import './App.css'
 
 function App() {
 
-  const ACCESS_KEY = '7c328a2c5dcd426ba40c117e0a014a05'
+  const ACCESS_KEY = import .meta.env.VITE_APP_ACCESS_KEY;
 
   const [inputs, setInputs] = useState({
     url: "",
@@ -41,17 +41,8 @@ function App() {
     let url_starter = "https://";
     let fullURL = url_starter + inputs.url;
 
-    let query = `https://api.apiflash.com/v1/urltoimage?
-    access_key=${ACCESS_KEY}&
-    url=${fullURL}&
-    format=${inputs.format}&
-    width=${inputs.width}&
-    height=${inputs.height}&
-    no_cookie_banners=${inputs.no_cookie_banners}&
-    no_ads=${inputs.no_ads}&
-    wait_until=${wait_until}&
-    response_type=${response_type}&
-    fail_on_status=${fail_on_status}`;
+    let query = `https://api.apiflash.com/v1/urltoimage?access_key=${ACCESS_KEY}&url=${fullURL}&format=${inputs.format}&width=${inputs.width}&height=${inputs.height}&no_cookie_banners=${inputs.no_cookie_banners}&no_ads=${inputs.no_ads}&wait_until=${wait_until}&response_type=${response_type}&fail_on_status=${fail_on_status}`;
+    // let query = `https://api.apiflash.com/v1/urltoimage?access_key=${ACCESS_KEY}&url=${fullURL}&format=jpeg&response_type=json`
 
     callAPI(query).catch(console.error);
   }

@@ -1,3 +1,5 @@
+
+// eslint-disable-next-line react/prop-types
 const APIForm = ({ inputs, handleChange, onSubmit }) => {
 
   const inputsInfo = [
