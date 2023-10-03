@@ -1,4 +1,5 @@
 const APIForm = ({ inputs, handleChange, onSubmit }) => {
+
   const inputsInfo = [
     "Input a link to any website you would like to take a screenshot of. Do not include https or any protocol in the URL",
     "Input which image format you would prefer for your screenshot: jpeg, png, or webp",

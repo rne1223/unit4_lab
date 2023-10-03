@@ -5,7 +5,7 @@ import './App.css'
 
 function App() {
 
-  const ACCESS_KEY = '0e6a845f162f4a9e80e34f80c5f4d428'
+  const ACCESS_KEY = '7c328a2c5dcd426ba40c117e0a014a05'
 
   const [inputs, setInputs] = useState({
     url: "",
@@ -30,7 +30,6 @@ function App() {
       setCurrentImage(json.url);
       setPrevImages((images) => [...images, json.url]);
       reset();
-      getQuota();
     }
   }
 
@@ -58,6 +57,9 @@ function App() {
   }
 
   const submitForm = () => {
+
+    console.log("hello world");
+
     let defaultValues = {
       format: "jpeg",
       no_ads: "true",
@@ -78,16 +80,6 @@ function App() {
       makeQuery()
     }
   }
-
-
-  const [quota, setQuota] = useState(null);
-  const getQuota = async () => {
-    const response = await fetch(`https://api.apiflash.com/v1/urltoimage/quota?access_key=${ACCESS_KEY}`);
-    const result = await response.json();
-
-    setQuota(result);
-  }
-
 
   const reset = () => {
     setInputs({
@@ -147,29 +139,9 @@ function App() {
         </p>
       </div>
 
-
-
-      <br></br>
-
-
-
-
-
       <div className="container">
         <Gallery images={prevImages} />
       </div>
-
-      {quota ? (
-        <p className="quota">
-          {" "}
-          Remaining API calls: {quota.remaining} out of {quota.limit}
-        </p>
-      ) : (
-        <p></p>
-      )}
-
-
-
 
     </div>
   );
